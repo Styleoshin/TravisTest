@@ -1,0 +1,14 @@
+language: cpp
+
+compiler: gcc
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install libqt4-dev qt4-qmake
+
+script:
+  - qmake -project
+  - qmake TravisTest.pro
+  - make
+
+script: make

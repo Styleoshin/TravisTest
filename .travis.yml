@@ -1,14 +1,20 @@
-language: cpp
+{
+  "os": "linux",
+  "dist": "trusty",
+  "group": "stable",
+  "script": [
+    "qmake -project",
+    "qmake TravisTest.pro",
+    "make"
+  ],
+  "language": "cpp",
+  "before_install": [
+    "sudo add-apt-repository ppa:beineri/opt-qt-5.10.1-trusty -y",
+    "sudo apt-get update",
 
-compiler: gcc
-
-install:
-  - sudo apt-get update
-  - sudo apt-get install libqt4-dev qt4-qmake
-
-script:
-  - qmake -project
-  - qmake TravisTest.pro
-  - make
-
-script: make
+  ],
+  "install":[
+    "sudo apt-get install qtbase510-dev qtdeclarative510-dev"
+    "source /opt/qt510/bin/qt510-env.sh"
+  ]
+}
